@@ -1,0 +1,33 @@
+.toprow{
+  padding-bottom: 10%;
+}
+
+h1{
+  font-weight: 600;
+}
+
+
+ion-input{
+  border: solid 1px gray;
+  padding-left: 5px !important;
+  margin-top: 4px;
+  height: 44px;
+  border-radius: 6px;
+}
+
+.form-submit-button {
+  display: grid;
+  margin-top: 22px;
+
+  ion-button {
+    height: 44px;
+    --border-radius: 6px;
+  }
+}
+
+ion-list{
+  border: solid 5px red;
+  ion-item p{
+    color: blue !important;
+  }
+}

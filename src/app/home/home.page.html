@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Coding Exercise
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-grid>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()" novalidate>
+      <ion-row class="toprow">
+        <ion-col>
+          <h1>Sample App with ion-datetime component.</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-label class="ion-text-start">Select a date from future</ion-label>
+          <ion-input id="open-date-input" formControlName="date" type="text" value="{{ dateValue | date: 'dd-MM-yyyy' }}" placeholder="Select Date"></ion-input>
+          <ion-popover trigger="open-date-input" size="cover">
+            <ng-template>
+              <ion-datetime
+                #popoverDatetime
+                presentation="date"
+                min="{{minDate}}"
+                max="{{maxDate}}"
+                value=''
+                showDefaultButtons="true"
+                (ionChange)="dateValue = popoverDatetime.value"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-col>
+      </ion-row>
+      <div class="form-submit-button">
+				<ion-button fill="outline" size="large" shape="round"  [disabled]="form.invalid" type="submit">Submit</ion-button>
+			</div>
+      </form>
+    </ion-grid>
+    <ion-list *ngIf="showList">
+      <ion-item>
+        <p><strong>Today:</strong><i> {{dateToday}}</i></p>
+      </ion-item>
+      <ion-item>
+        <p><strong>Yesterday:</strong><i> {{dateYesterday}}</i></p>
+      </ion-item>
+      <ion-item>
+        <p><strong>10 days past selected date:</strong><i> {{tenDays}}</i></p>
+      </ion-item>
+      <ion-item>
+        <p><strong>1 year past selected date:</strong><i> {{previousYear}}</i></p>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
